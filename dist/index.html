@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1829" />
+    <meta name="description" content="AICC-Security Portal — 資安服務目錄與入口連結。" />
+    <title>AICC-Security Portal｜安全服務入口</title>
+    <style>
+      :root {
+        --navy: #101f32;
+        --navy-deep: #0b1829;
+        --ink: #19283a;
+        --muted: #657387;
+        --line: #e6eaf0;
+        --page: #f5f7fa;
+        --white: #fff;
+        --blue: #2669ee;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; background: var(--page); color: var(--ink); font-family: Inter, -apple-system, BlinkMacSystemFont, "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif; -webkit-font-smoothing: antialiased; }
+      button, input { font: inherit; }
+      button, a { -webkit-tap-highlight-color: transparent; }
+      a { text-decoration: none; color: inherit; }
+      a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid #7ab6ff; outline-offset: 3px; }
+      .icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+      .layout { min-height: 100vh; display: grid; grid-template-columns: 236px minmax(0, 1fr); }
+      .sidebar { background: var(--navy-deep); color: #d5deea; padding: 32px 18px 24px; min-height: 100vh; display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; }
+      .brand { display: flex; align-items: center; gap: 12px; padding: 0 12px; margin-bottom: 60px; }
+      .brand-mark { width: 39px; height: 43px; display: grid; place-items: center; color: #fff; position: relative; }
+      .brand-mark::before { content: ""; position: absolute; inset: 2px 3px; background: linear-gradient(145deg, #4d93ff, #1959db); clip-path: polygon(50% 0, 94% 24%, 94% 73%, 50% 100%, 6% 73%, 6% 24%); }
+      .brand-mark .icon { position: relative; width: 22px; height: 22px; stroke-width: 2; }
+      .brand-copy { display: flex; flex-direction: column; line-height: 1.25; letter-spacing: -.02em; }
+      .brand-copy b { color: #fff; font-size: 17px; font-weight: 750; }
+      .brand-copy small { color: #91a4bc; font-size: 10px; font-weight: 650; letter-spacing: .17em; margin-top: 4px; }
+      .side-heading { font-size: 10px; color: #6d849f; letter-spacing: .17em; font-weight: 700; padding: 0 15px; margin-bottom: 12px; }
+      .side-link { min-height: 45px; display: flex; gap: 13px; align-items: center; border-radius: 10px; padding: 0 15px; color: #92a4b9; font-size: 13px; font-weight: 600; transition: background .2s, color .2s; }
+      .side-link .icon { width: 17px; height: 17px; }
+      .side-link:hover { color: #fff; background: #192c43; }
+      .side-link.active { color: #fff; background: #203754; box-shadow: inset 3px 0 0 #4b93ff; }
+      .side-rule { height: 1px; background: #25364a; margin: 24px 12px; }
+      .sidebar-bottom { margin-top: auto; border-top: 1px solid #24374b; padding: 24px 12px 0; }
+      .sidebar-bottom .system-dot { width: 7px; height: 7px; border-radius: 50%; background: #55d8ae; box-shadow: 0 0 0 4px #153d3d; }
+      .sidebar-bottom .system-label { display: flex; align-items: center; gap: 11px; font-size: 12px; color: #a6b9cc; }
+      .sidebar-bottom p { font-size: 11px; color: #617892; margin: 12px 0 0; line-height: 1.6; }
+      .main { min-width: 0; }
+      .topbar { height: 76px; padding: 0 clamp(24px, 4.2vw, 70px); background: rgba(255,255,255,.9); border-bottom: 1px solid #e8ecf2; display: flex; align-items: center; justify-content: space-between; }
+      .breadcrumbs { display: flex; gap: 10px; align-items: center; color: #8996a8; font-size: 13px; }
+      .breadcrumbs strong { color: #33445b; font-weight: 700; }
+      .breadcrumbs .icon { width: 15px; height: 15px; }
+      .top-right { display: flex; align-items: center; gap: 15px; }
+      .top-status { color: #76859b; font-size: 11px; letter-spacing: .12em; font-weight: 800; }
+      .top-avatar { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: #eaf0fe; color: #2e61bb; font-size: 11px; font-weight: 850; letter-spacing: .05em; }
+      .content { padding: 32px clamp(24px, 4.2vw, 70px) 64px; max-width: 1660px; margin: auto; }
+      .hero { min-height: 334px; background: linear-gradient(108deg, #102840 0%, #10243b 51%, #142c49 100%); border-radius: 22px; overflow: hidden; color: #fff; position: relative; display: flex; align-items: center; isolation: isolate; box-shadow: 0 15px 38px rgba(22, 44, 72, .09); }
+      .hero::after { content:""; position:absolute; width:620px; height:620px; right:-180px; top:-260px; background:radial-gradient(circle, rgba(54,128,225,.20), transparent 65%); z-index:-1; }
+      .hero-copy { padding: 46px 55px; position: relative; z-index: 2; width: min(66%, 710px); }
+      .eyebrow { font-size: 10px; letter-spacing: .22em; color: #7db3ff; font-weight: 800; display: flex; align-items: center; gap: 11px; }
+      .eyebrow::before { content: ""; width: 21px; height: 1px; background: #6ca7ff; }
+      .hero h1 { font-size: clamp(28px, 3.1vw, 44px); letter-spacing: -.055em; line-height: 1.38; margin: 19px 0 12px; font-weight: 800; }
+      .hero h1 span { color: #82b7ff; }
+      .hero p { color: #b6c7d9; font-size: 13px; line-height: 1.95; margin: 0; max-width: 510px; }
+      .hero-bottom { display: flex; align-items: center; gap: 20px; margin-top: 26px; flex-wrap: wrap; }
+      .hero-btn { display: inline-flex; gap: 14px; align-items: center; background: #fff; color: #153452; font-size: 12px; font-weight: 800; padding: 12px 17px; border-radius: 8px; transition: transform .2s, background .2s; }
+      .hero-btn:hover { transform: translateY(-2px); background: #edf5ff; }
+      .hero-btn .icon { width: 15px; height: 15px; }
+      .hero-count { font-size: 11px; color: #acbed1; display: flex; align-items: center; gap: 9px; }
+      .hero-count b { color: #e7f2ff; font-size: 17px; }
+      .hero-art { position: absolute; right: 1%; top: -6%; height: 114%; width: 45%; pointer-events: none; opacity: .97; }
+      .hero-art svg { width: 100%; height: 100%; }
+      .service-section { padding-top: 45px; scroll-margin-top: 24px; }
+      .section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 22px; flex-wrap: wrap; }
+      .section-kicker { font-size: 10px; color: #3576df; letter-spacing: .17em; font-weight: 850; text-transform: uppercase; margin-bottom: 11px; }
+      .section-heading h2 { font-size: 25px; line-height: 1.25; letter-spacing: -.04em; margin: 0; font-weight: 800; }
+      .section-heading p { margin: 10px 0 0; font-size: 12px; color: #7b899b; line-height: 1.7; }
+      .count-tag { border: 1px solid #e4eaf1; background: #fff; padding: 10px 14px; border-radius: 8px; display: flex; align-items: center; gap: 11px; font-size: 11px; font-weight: 700; color: #65798d; }
+      .count-tag b { color: #2b66db; font-size: 14px; }
+      .tools { display: flex; align-items: center; gap: 11px; margin: 26px 0 22px; flex-wrap: wrap; justify-content: space-between; }
+      .filters { display: flex; flex-wrap: wrap; gap: 8px; }
+      .filter { cursor: pointer; border: 1px solid #e3e8ef; background: #fff; color: #728196; border-radius: 8px; padding: 9px 14px; font-size: 11px; font-weight: 700; transition: all .16s ease; }
+      .filter:hover { color: #2359bb; border-color: #b9cdec; }
+      .filter.active { border-color: #205acf; background: #205acf; color: #fff; box-shadow: 0 4px 12px #2764da24; }
+      .search { display: flex; align-items: center; gap: 8px; padding: 0 12px; background: #fff; border: 1px solid #e3e8ef; border-radius: 8px; height: 37px; width: 208px; color: #94a1b0; }
+      .search .icon { width: 16px; height: 16px; }
+      .search input { width: 100%; border: 0; outline: 0; background: transparent; color: #283b50; font-size: 11px; }
+      .search input::placeholder { color: #9ba8b8; }
+      .card-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 19px; }
+      .service-card { display: flex; flex-direction: column; min-width: 0; padding: 12px; background: #fff; border: 1px solid #e5eaf0; border-radius: 15px; box-shadow: 0 4px 14px rgba(25,48,76,.018); transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+      .service-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(24,51,86,.09); border-color: #c8d9ee; }
+      .service-card[hidden] { display: none; }
+      .card-visual { height: auto; aspect-ratio: 1.95; overflow: hidden; border-radius: 10px; background: #e8eef8; }
+      .card-visual img { display: block; width: 100%; height: 100%; object-fit: cover; }
+      .card-body { padding: 19px 10px 8px; display: flex; flex-direction: column; flex: 1; }
+      .card-meta { display: flex; align-items: center; gap: 7px; color: #72839a; font-size: 10px; font-weight: 750; letter-spacing: .025em; }
+      .card-meta i { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+      .card-body h3 { font-size: 17px; letter-spacing: -.035em; margin: 11px 0 9px; line-height: 1.5; font-weight: 800; }
+      .card-body p { font-size: 11.5px; line-height: 1.92; color: #748398; margin: 0; min-height: 68px; }
+      .card-bottom { border-top: 1px solid #edf0f4; margin-top: 19px; padding-top: 15px; display: flex; align-items: center; justify-content: space-between; }
+      .card-bottom span { color: #a0aebe; font-size: 10px; }
+      .service-link { border: none; background: transparent; padding: 5px 0; color: #2764cf; font-size: 11px; font-weight: 850; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+      .service-link .icon { width: 15px; height: 15px; transition: transform .2s; }
+      .service-link:hover .icon { transform: translate(2px,-2px); }
+      .empty { text-align: center; padding: 48px 20px; background: #fff; border: 1px dashed #d1dbe8; border-radius: 15px; color: #71839a; font-size: 13px; }
+      .empty[hidden] { display: none; }
+      .footer { margin-top: 47px; padding-top: 23px; border-top: 1px solid #e1e6ee; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 11px; color: #98a6b7; }
+      .footer strong { color: #7488a0; font-weight: 800; }
+      .footer-right { display: flex; align-items: center; gap: 7px; }
+      .footer-right .icon { width: 14px; height: 14px; color: #7395c9; }
+      .toast { position: fixed; bottom: 30px; right: 30px; z-index: 30; max-width: min(380px, calc(100vw - 40px)); display: flex; align-items: flex-start; gap: 11px; background: #142b43; color: #fff; padding: 15px 19px; border-radius: 12px; box-shadow: 0 20px 45px #10274044; font-size: 12px; line-height: 1.7; opacity: 0; transform: translateY(10px); pointer-events: none; transition: opacity .2s, transform .2s; }
+      .toast.visible { opacity: 1; transform: translateY(0); }
+      .toast .icon { color: #80b9ff; }
+      @media (min-width: 1500px) { .card-visual { aspect-ratio: 2.1; } .content { padding-top: 38px; } }
+      @media (max-width: 1200px) { .layout { grid-template-columns: 202px minmax(0,1fr); } .sidebar { padding-left: 12px; padding-right: 12px; } .content { padding-left: 30px; padding-right: 30px; } .hero-copy { padding-left: 40px; width: 70%; } .hero-art { right: -8%; } .card-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+      @media (max-width: 760px) { .layout { display: block; } .sidebar { position: static; min-height: auto; height: auto; padding: 17px 20px; flex-direction: row; align-items: center; justify-content: space-between; } .brand { margin: 0; padding: 0; } .side-heading, .sidebar-bottom, .side-rule { display: none; } .side-nav { display: flex; gap: 4px; } .side-link { font-size: 0; width: 39px; height: 39px; min-height: 39px; padding: 0; justify-content: center; } .side-link .icon { width: 18px; height: 18px; } .side-link.active { box-shadow: none; } .topbar { height: 54px; padding: 0 22px; } .content { padding: 23px 20px 42px; } .hero { min-height: 354px; align-items: flex-start; } .hero-copy { width: 100%; padding: 34px 28px; } .hero h1 { font-size: 31px; } .hero p { max-width: 450px; } .hero-art { opacity: .26; width: 85%; right: -35%; top: 3%; } .service-section { padding-top: 36px; } .top-status { display: none; } }
+      @media (max-width: 550px) { .brand-mark { width: 32px; height: 36px; } .brand-mark .icon { width: 19px; } .brand-copy b { font-size: 14px; } .brand-copy small { font-size: 9px; } .hero { min-height: 350px; border-radius: 16px; } .hero h1 { font-size: 28px; } .hero-copy { padding: 33px 25px; } .hero-art { width: 110%; right: -55%; } .card-grid { grid-template-columns: 1fr; } .card-visual { aspect-ratio: 2; } .tools { align-items: stretch; } .filters { width: 100%; } .filter { flex-grow: 1; padding: 9px 8px; } .search { width: 100%; } .section-heading h2 { font-size: 23px; } .count-tag { display: none; } .card-body p { min-height: 0; } .footer { font-size: 10px; } .toast { right: 20px; bottom: 20px; } }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+    </style>
+  </head>
+  <body>
+    <div class="layout" id="top">
+      <aside class="sidebar" aria-label="主要導覽">
+        <a class="brand" href="#top" aria-label="AICC-Security Portal 首頁">
+          <span class="brand-mark"><svg class="icon" viewBox="0 0 24 24"><path d="m12 3 7 4v5c0 4.1-2.7 6.9-7 9-4.3-2.1-7-4.9-7-9V7l7-4Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <span class="brand-copy"><b>AICC</b><small>SECURITY PORTAL</small></span>
+        </a>
+        <nav class="side-nav" aria-label="主選單">
+          <div class="side-heading">WORKSPACE</div>
+          <a class="side-link active" href="#top" aria-current="page"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>總覽首頁</a>
+          <a class="side-link" href="#services"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>安全服務</a>
+        </nav>
+        <div class="side-rule"></div>
+        <div class="side-heading">AICC / SECURITY</div>
+        <div class="sidebar-bottom">
+          <div class="system-label"><span class="system-dot"></span>SECURITY WORKSPACE</div>
+          <p>統一資安服務入口<br/>AICC · Service Directory</p>
+        </div>
+      </aside>
+
+      <div class="main">
+        <header class="topbar">
+          <div class="breadcrumbs"><svg class="icon" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10H3V10Z"/><path d="M9 20v-7h6v7"/></svg><span>/</span><strong>安全服務總覽</strong></div>
+          <div class="top-right"><span class="top-status">AICC SECURITY</span><span class="top-avatar" aria-hidden="true">AC</span></div>
+        </header>
+
+        <main class="content">
+          <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-copy">
+              <div class="eyebrow">SECURITY SERVICE DIRECTORY</div>
+              <h1 id="hero-title">AICC 資安服務<br/><span>統一入口</span></h1>
+              <p>此頁整理各資安平台的用途、服務說明及入口連結。<br/>可依分類或關鍵字查找所需服務。</p>
+              <div class="hero-bottom">
+                <a class="hero-btn" href="#services">查看服務 <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <span class="hero-count"><b id="heroServiceCount">06</b> / 項服務</span>
+              </div>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+              <svg viewBox="0 0 540 430" xmlns="http://www.w3.org/2000/svg" fill="none">
+                <defs><linearGradient id="orbit" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4F9DFF" stop-opacity=".7"/><stop offset="1" stop-color="#4F9DFF" stop-opacity=".05"/></linearGradient><linearGradient id="shield" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#5EAFFF"/><stop offset="1" stop-color="#1759B8"/></linearGradient><radialGradient id="glow"><stop stop-color="#247AE5" stop-opacity=".28"/><stop offset="1" stop-color="#247AE5" stop-opacity="0"/></radialGradient></defs>
+                <circle cx="284" cy="210" r="198" fill="url(#glow)"/>
+                <g stroke="#4687C5" stroke-opacity=".18" stroke-width="1"><path d="M20 210h520M280 0v430"/><path d="M50 70 510 350M60 350 510 80"/></g>
+                <circle cx="281" cy="211" r="172" stroke="url(#orbit)" stroke-dasharray="4 9"/><circle cx="281" cy="211" r="133" stroke="#4D95DF" stroke-opacity=".24"/><circle cx="281" cy="211" r="94" stroke="#71BBFF" stroke-opacity=".21"/>
+                <g stroke="#5DA5EF" stroke-opacity=".45" stroke-width="1.4"><path d="M281 39v62"/><path d="M407 97l-45 43"/><path d="M451 211h-63"/><path d="M395 332l-43-43"/><path d="M281 383v-65"/><path d="M157 335l45-45"/><path d="M108 211h64"/><path d="M159 89l44 47"/></g>
+                <g fill="#1B4269" stroke="#6EB5FF" stroke-opacity=".65"><circle cx="281" cy="39" r="7"/><circle cx="407" cy="97" r="7"/><circle cx="451" cy="211" r="7"/><circle cx="395" cy="332" r="7"/><circle cx="281" cy="383" r="7"/><circle cx="157" cy="335" r="7"/><circle cx="108" cy="211" r="7"/><circle cx="159" cy="89" r="7"/></g>
+                <g transform="translate(214 135)"><path d="M67 0 128 34v68c0 44-31 65-61 82C37 167 6 146 6 102V34L67 0Z" fill="#132F50" stroke="#6EB8FF" stroke-width="2.5"/><path d="M67 17 111 42v60c0 32-19 49-44 63-25-14-44-31-44-63V42l44-25Z" fill="url(#shield)" fill-opacity=".2" stroke="#60B7FA" stroke-opacity=".35"/><path d="m46 92 15 16 29-32" stroke="#8AD8FF" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></g>
+                <g fill="#85C5FF"><circle cx="281" cy="39" r="2"/><circle cx="451" cy="211" r="2"/><circle cx="108" cy="211" r="2"/></g>
+                <g fill="#659AD1" font-family="Arial,sans-serif" font-size="10" letter-spacing="2"><text x="307" y="44">PROTECT</text><text x="405" y="243">VERIFY</text><text x="53" y="189">MONITOR</text></g>
+              </svg>
+            </div>
+          </section>
+
+          <section class="service-section" id="services" aria-labelledby="services-title">
+            <div class="section-heading">
+              <div><div class="section-kicker">SECURITY SERVICES</div><h2 id="services-title">服務列表</h2><p>依分類或關鍵字查找服務。</p></div>
+              <div class="count-tag">AVAILABLE SERVICES <b id="headerServiceCount">06</b></div>
+            </div>
+
+            <div class="tools">
+              <div class="filters" id="serviceFilters" role="group" aria-label="依服務類型篩選"><button type="button" class="filter active" aria-pressed="true">全部服務</button></div>
+              <label class="search" aria-label="搜尋服務"><svg class="icon" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="7.2"/><path d="m16.2 16.2 5 5"/></svg><input id="searchInput" type="search" placeholder="搜尋安全服務..." autocomplete="off"/></label>
+            </div>
+
+            <div class="card-grid" id="serviceGrid" aria-live="polite"></div>
+            <div class="empty" id="emptyState" hidden>找不到符合的服務，請試試其他關鍵字或分類。</div>
+          </section>
+
+          <footer class="footer"><span><strong>AICC-Security Portal</strong> © 2026 · Security Service Directory</span><span class="footer-right"><svg class="icon" viewBox="0 0 24 24"><path d="m12 3 8 4v5c0 5-3.4 7.6-8 9-4.6-1.4-8-4-8-9V7l8-4Z"/><path d="m9 12 2 2 4-4"/></svg>服務入口索引</span></footer>
+        </main>
+      </div>
+    </div>
+
+    <div class="toast" role="status" aria-live="polite" id="toast"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.5h.01"/></svg><span id="toastText"></span></div>
+    <script src="app.js" defer></script>
+  </body>
+</html>

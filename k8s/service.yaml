@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: aicc-security-portal
+  labels:
+    app.kubernetes.io/name: aicc-security-portal
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: aicc-security-portal
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: http

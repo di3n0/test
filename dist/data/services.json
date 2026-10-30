@@ -1,0 +1,82 @@
+{
+  "categories": [
+    { "id": "risk", "label": "風險與弱點" },
+    { "id": "dev", "label": "開發安全" },
+    { "id": "attack", "label": "攻防驗證" },
+    { "id": "intel", "label": "威脅情報" }
+  ],
+  "services": [
+    {
+      "id": "vulnerability-scan",
+      "name": "弱點掃描平台",
+      "category": "risk",
+      "subtitle": "基礎設施安全",
+      "description": "針對主機、網路服務與開放連接埠進行安全檢測，識別潛在弱點並彙整風險報告，協助安排修補優先順序。",
+      "image": "assets/vulnerability-scan.svg",
+      "imageAlt": "主機與網路弱點掃描的圖形示意",
+      "accent": "#528de9",
+      "url": "",
+      "keywords": ["主機", "網路", "連接埠", "掃描"]
+    },
+    {
+      "id": "software-inventory",
+      "name": "軟體清單漏洞追蹤平台",
+      "category": "risk",
+      "subtitle": "軟體供應鏈治理",
+      "description": "集中管理軟體組件與相依套件清單，持續關注已知漏洞與風險變化，協助追蹤受影響的專案與版本。",
+      "image": "assets/software-inventory.svg",
+      "imageAlt": "軟體相依關係與風險追蹤的圖形示意",
+      "accent": "#8378db",
+      "url": "",
+      "keywords": ["軟體", "元件", "套件", "SBOM", "CVE"]
+    },
+    {
+      "id": "pipeline-security",
+      "name": "CI/CD安全掃描平台",
+      "category": "dev",
+      "subtitle": "開發流程安全",
+      "description": "將安全檢測整合至開發與部署流程，自動執行多類型掃描，讓發現、回饋與追蹤跟上每一次交付。",
+      "image": "assets/pipeline-security.svg",
+      "imageAlt": "持續整合與部署安全檢測流程的圖形示意",
+      "accent": "#2ba99c",
+      "url": "",
+      "keywords": ["CI/CD", "開發", "部署", "流水線", "自動化"]
+    },
+    {
+      "id": "ai-red-team",
+      "name": "AI紅隊平台",
+      "category": "attack",
+      "subtitle": "攻防模擬與驗證",
+      "description": "透過自動化攻擊情境與安全驗證，模擬潛在風險路徑，協助團隊檢視系統防護與可能的暴露面。",
+      "image": "assets/ai-red-team.svg",
+      "imageAlt": "自動化攻防模擬路徑的圖形示意",
+      "accent": "#e47b93",
+      "url": "",
+      "keywords": ["AI", "攻擊模擬", "紅隊", "驗證"]
+    },
+    {
+      "id": "web-security",
+      "name": "Web掃描平台",
+      "category": "dev",
+      "subtitle": "Web 應用程式安全",
+      "description": "聚焦網站與 Web 應用程式，進行動態安全測試與常見弱點檢測，協助檢視對外服務的安全狀態。",
+      "image": "assets/web-security.svg",
+      "imageAlt": "Web 應用程式安全掃描的圖形示意",
+      "accent": "#28a5b7",
+      "url": "",
+      "keywords": ["Web", "網站", "應用程式", "DAST"]
+    },
+    {
+      "id": "cve-intelligence",
+      "name": "CVE漏洞情報中心",
+      "category": "intel",
+      "subtitle": "安全情資與追蹤",
+      "description": "彙整與追蹤公開漏洞資訊、產品公告及風險更新，方便團隊快速掌握新興威脅與修補動態。",
+      "image": "assets/cve-intelligence.svg",
+      "imageAlt": "CVE 漏洞情報通知與追蹤的圖形示意",
+      "accent": "#e4a344",
+      "url": "",
+      "keywords": ["CVE", "情報", "公告", "監控", "追蹤"]
+    }
+  ]
+}

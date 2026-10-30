@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 328">
+<defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#292550"/><stop offset="1" stop-color="#6257AA"/></linearGradient><radialGradient id="g"><stop stop-color="#A996FF" stop-opacity=".28"/><stop offset="1" stop-color="#A996FF" stop-opacity="0"/></radialGradient></defs>
+<rect width="640" height="328" fill="url(#bg)"/><circle cx="388" cy="156" r="240" fill="url(#g)"/>
+<g font-family="Arial,sans-serif"><text x="37" y="44" fill="#C3B8FF" font-size="11" letter-spacing="3" font-weight="700">SOFTWARE INVENTORY</text><text x="37" y="69" fill="#F6F1FF" font-size="15" font-weight="700">Component relationship map</text></g>
+<rect x="35" y="94" width="571" height="201" rx="13" fill="#201E43" fill-opacity=".68" stroke="#AEA3E9" stroke-opacity=".27"/>
+<g stroke="#A7A2ED" stroke-width="2" stroke-opacity=".53" fill="none"><path d="M143 193h98M318 193h103M279 170v-38h137M279 216v34h141M486 140h45M486 246h45"/><path d="M143 193h25v-58h73M143 193h25v71h73"/></g>
+<g font-family="Arial,sans-serif" font-size="10" font-weight="700"><rect x="64" y="166" width="80" height="54" rx="10" fill="#6F63CB" stroke="#B9AEFF"/><text x="81" y="188" fill="#fff">PROJECT</text><text x="86" y="204" fill="#D6D0FF" font-size="8">ROOT</text>
+<rect x="241" y="168" width="77" height="50" rx="9" fill="#50499A" stroke="#B9AEFF"/><text x="252" y="188" fill="#fff">PACKAGE</text><text x="263" y="202" fill="#BAB1F9" font-size="8">CORE</text>
+<rect x="241" y="110" width="77" height="41" rx="9" fill="#393769" stroke="#9C92E9"/><text x="254" y="135" fill="#DED9FF">LIBRARY</text>
+<rect x="241" y="241" width="77" height="41" rx="9" fill="#393769" stroke="#9C92E9"/><text x="254" y="266" fill="#DED9FF">MODULE</text>
+<rect x="421" y="119" width="65" height="42" rx="9" fill="#3C3875" stroke="#9189D9"/><text x="434" y="144" fill="#E4E0FF">ITEM A</text>
+<rect x="421" y="172" width="65" height="42" rx="9" fill="#6B3E7C" stroke="#D99BCB"/><text x="434" y="197" fill="#FFE9F9">ITEM B</text>
+<rect x="421" y="227" width="65" height="42" rx="9" fill="#3C3875" stroke="#9189D9"/><text x="434" y="252" fill="#E4E0FF">ITEM C</text>
+<rect x="531" y="120" width="45" height="39" rx="8" fill="#474176" stroke="#9C93DB"/><text x="541" y="143" fill="#C9C2FF" font-size="9">OK</text><rect x="531" y="227" width="45" height="39" rx="8" fill="#474176" stroke="#9C93DB"/><text x="541" y="250" fill="#C9C2FF" font-size="9">OK</text>
+</g><circle cx="508" cy="194" r="11" fill="#EC93B7"/><path d="M508 188v7M508 200v.1" stroke="#552C58" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
